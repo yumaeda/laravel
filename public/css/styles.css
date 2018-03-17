@@ -1,0 +1,98 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.profile_header {
+    background-color: black;
+    color: white;
+
+    height: 100px;
+    width: 100%;
+}
+
+.profile_image_pane {
+    float: left;
+    width: 100px;
+    height: 100px;
+}
+.profile_image_pane img {
+    width: 100%;
+    height: 100%;
+}
+
+.profile_name_pane {
+    float: left;
+    width: auto;
+    padding: 20px 0 0 20px;
+    text-align: center;
+}
+
+.point_text {
+    padding-top: 5px;
+    font-size: 30px;
+}
+
+.profile_body {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.profile_body table {
+    width: 200px;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+}
+.profile_body table td {
+    padding-bottom: 10px;
+}
+
+.point_donation_body {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.point_donation_body table {
+    text-align: left;
+    margin-top: 20px;
+    width: 300px;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+}
+.point_donation_body select {
+    padding: 10px;
+}
+
+.point_fld {
+    width: 30px;
+    padding: 10px;
+    text-align: center;
+}
+
+.comment_pane {
+    padding: 0 15px 0 15px;
+    margin-top: 30px;
+}
+
+.comment_fld {
+    width: 100%;
+}
+
+.profile_footer {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.footer_button {
+    padding: 10px 40px;
+    margin: 10px;
+}
+
+.copyright_pane {
+    font-style: italic;
+    margin-top: 20px;
+    color: grey;
+}
