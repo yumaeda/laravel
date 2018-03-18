@@ -1,95 +1,71 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>松根ファミリー｜Scheduler</title>
+        <script type="text/javascript">
 
-        <title>Laravel</title>
+        document.createElement('header');
+        document.createElement('footer');
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
+        </script>
+        <script src="{{ asset('js/vendor/riot+compiler.min.js') }}"></script>
+        <script src="{{ asset('riot/login.tag') }}" type="riot/tag"></script>
         <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
 
-            .full-height {
-                height: 100vh;
-            }
+        .container {
+            text-align: center;
+        }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+        .nav_link_pane {
+            margin-top: 15px;
+        }
 
-            .position-ref {
-                position: relative;
-            }
+        .nav_link_pane a {
+            text-decoration: none;
+            color: #303024;
+            padding: 0 20px 0 0;
+        }
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+        footer {
+            color: #303024;
+            margin-top: 100px;
+        }
 
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="container">
+            <header>
+                <h2>山ちゃんと愉快な仲間達！！</h2>
+                <img src="{{ asset('images/logo.gif') }}" alt="Logo GIF">
+            </header>
             @if (Route::has('login'))
-                <div class="top-right links">
+                <div class="nav_link_pane">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/profiles') }}">プロファイル</a>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">ログアウト</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
+                        <a href="{{ route('login') }}">ログイン</a>
+                        <a href="{{ route('register') }}">会員登録</a>
                     @endauth
                 </div>
             @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+            <footer>
+                &copy;<?= date('Y') ?>&nbsp;松根ファミリー
+            </footer>
         </div>
     </body>
 </html>
+
+<script type="text/javascript" src="{{ asset('js/vendor/sweetalert2.all.min.js') }}"></script>
+<script>
+
+riot.mount('*');
+
+</script>
+

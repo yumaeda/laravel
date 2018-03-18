@@ -15,5 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/profiles/{id}', 'ProfileController@index');
-Route::get('/points/{id}', 'PointController@index');
+Route::get('/profiles', 'ProfileController@index');
+Route::get('/points', 'PointController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

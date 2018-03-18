@@ -1,7 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /*
  * Controller for point management
@@ -21,13 +23,16 @@ class PointController extends Controller
      * Show point index page
      *
      * @access public
-     * @param int $id
      * @return void
      *
      */
-    public function index(int $id)
+    public function index()
     {
-        return view('points/index', [ 'id' => $id ]);
+        $users = User::select('id', 'first_name', 'last_name')
+            ->where('id', '!=', Auth::id())
+            ->get();
+
+        return view('points/index', [ 'users' => $users ]);
     }
 }
 

@@ -35,11 +35,13 @@
 
 .profile_body {
     width: 100%;
+    text-align: center;
     margin-top: 30px;
     margin-bottom: 30px;
 }
 .profile_body table {
     width: 200px;
+    text-align: left;
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;

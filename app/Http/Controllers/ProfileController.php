@@ -10,6 +10,17 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller
 {
     /*
+     * List of blood types
+     */
+    const BLOOD_TYPES = [
+        '?',
+        'A',
+        'AB',
+        'B',
+        'O',
+    ];
+
+    /*
      * Constructor
      *
      */
@@ -21,13 +32,14 @@ class ProfileController extends Controller
      * Show profile index page
      *
      * @access public
-     * @param int $id
      * @return void
      *
      */
-    public function index(int $id)
+    public function index()
     {
-        return view('profiles/index', [ 'id' => $id ]);
+        $blood_type = self::BLOOD_TYPES[auth()->user()->blood_type];
+
+        return view('profiles/index', [ 'blood_type' => $blood_type ]);
     }
 }
 
