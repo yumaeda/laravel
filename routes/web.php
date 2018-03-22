@@ -11,6 +11,8 @@
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,6 +20,7 @@ Route::get('/', function () {
 Route::get('/profiles', 'ProfileController@index');
 Route::get('/points', 'PointController@index');
 
-Auth::routes();
+Route::get('/admin', 'AdminController@admin')
+    ->middleware('is_admin')
+    ->name('admin');
 
-Route::get('/home', 'HomeController@index')->name('home');
