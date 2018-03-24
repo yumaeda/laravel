@@ -5,11 +5,7 @@
 @section('content')
 <div class="point_donation_body">
     <span>To:&nbsp;</span>
-    <select>
-        @foreach ($users as $user)
-        <option text="{{ $user->id }}">{{ $user->first_name . ' ' . $user->last_name }}</option>
-        @endforeach
-    </select>
+    @include('inc.user_selector', [ 'users' => $users ])
     <input type="number" value="0" class="point_fld" max="{{ auth()->user()->point }}">&nbsp;pt
     <div class="comment_pane">
         <textarea class="comment_fld" rows="5" placeholder="Write comments before donation."></textarea>

@@ -12,14 +12,6 @@ use Illuminate\Support\Facades\Auth;
 class PointController extends Controller
 {
     /*
-     * Constructor
-     *
-     */
-    public function __construct()
-    {
-    }
-
-    /*
      * Show point index page
      *
      * @access public

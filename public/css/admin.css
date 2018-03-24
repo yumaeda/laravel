@@ -1,0 +1,50 @@
+.container {
+    text-align: center;
+}
+
+.body_pane {
+    margin-top: 20px;
+}
+
+.nav_link_pane {
+    margin: 20px;
+}
+
+.nav_link_pane a {
+    text-decoration: none;
+    color: #303024;
+    padding: 0 20px 0 0;
+}
+
+footer {
+    color: #303024;
+    margin-top: 100px;
+}
+
+.yen_fld {
+    width: 60px;
+    padding: 10px;
+    text-align: center;
+}
+
+.deposit_button {
+    color: white;
+    background-color: hotpink;
+    font-weight: bold;
+    border: none;
+
+    margin-top: 30px;
+    padding: 10px;
+    width: 240px;
+}
+
+.transaction_summary {
+    width: 300px;
+    text-align: left;
+    margin: 20px auto 0 auto;
+    border: 1px solid rgb(221, 221, 221);
+}
+
+.transaction_summary td {
+    padding: 10px;
+}

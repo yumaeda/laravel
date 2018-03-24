@@ -24,3 +24,7 @@ Route::get('/admin', 'AdminController@admin')
     ->middleware('is_admin')
     ->name('admin');
 
+Route::post('/admin/deposit', 'AdminController@deposit')
+    ->middleware('is_admin')
+    ->name('deposit');
+

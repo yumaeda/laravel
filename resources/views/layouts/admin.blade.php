@@ -3,37 +3,17 @@
     <head>
         <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>松根ファミリー｜Administration</title>
+        <title>@yield('title')</title>
         <script type="text/javascript">
 
         document.createElement('header');
         document.createElement('footer');
 
         </script>
+        <link href="{{ asset('css/common.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('css/admin.css') }}" rel="stylesheet" type="text/css">
         <script src="{{ asset('js/vendor/riot+compiler.min.js') }}"></script>
         <script src="{{ asset('riot/login.tag') }}" type="riot/tag"></script>
-        <style>
-
-        .container {
-            text-align: center;
-        }
-
-        .nav_link_pane {
-            margin-top: 15px;
-        }
-
-        .nav_link_pane a {
-            text-decoration: none;
-            color: #303024;
-            padding: 0 20px 0 0;
-        }
-
-        footer {
-            color: #303024;
-            margin-top: 100px;
-        }
-
-        </style>
     </head>
     <body>
         <div class="container">
@@ -41,15 +21,11 @@
                 <h2>山ちゃんと愉快な管理者達！！</h2>
                 <img src="{{ asset('images/logo.gif') }}" alt="Logo GIF">
             </header>
-            @if (Route::has('login'))
-                <div class="nav_link_pane">
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">ログアウト</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                    </form>
-                </div>
-            @endif
+            <div class="body_pane">
+                @yield('content')
+            </div>
             <footer>
+                @yield('footer')
                 &copy;<?= date('Y') ?>&nbsp;松根ファミリー
             </footer>
         </div>
