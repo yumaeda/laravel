@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('last_name');
             $table->timestamp('birthday');
             $table->tinyInteger('blood_type')->unsigned()->default(0);
-            $table->string('type')->default('default');
+            $table->tinyInteger('type')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
