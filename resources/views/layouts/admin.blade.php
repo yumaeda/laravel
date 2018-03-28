@@ -18,7 +18,7 @@
     <body>
         <div class="container">
             <header>
-                <h2>山ちゃんと愉快な管理者達！！</h2>
+                <h2>{{ __('matsune.admin_subtitle') }}</h2>
                 <img src="{{ asset('images/logo.gif') }}" alt="Logo GIF">
             </header>
             <div class="body_pane">
@@ -26,7 +26,7 @@
             </div>
             <footer>
                 @yield('footer')
-                &copy;<?= date('Y') ?>&nbsp;松根ファミリー
+                &copy;<?= date('Y') ?>&nbsp;{{ __('matsune.company_name') }}
             </footer>
         </div>
     </body>

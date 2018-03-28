@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>松根ファミリー｜Scheduler</title>
+        <title>{{ __('matsune.home_title') }}</title>
         <script type="text/javascript">
 
         document.createElement('header');
@@ -38,25 +38,25 @@
     <body>
         <div class="container">
             <header>
-                <h2>山ちゃんと愉快な仲間達！！</h2>
+                <h2>{{ __('matsune.home_subtitle') }}</h2>
                 <img src="{{ asset('images/logo.gif') }}" alt="Logo GIF">
             </header>
             @if (Route::has('login'))
                 <div class="nav_link_pane">
                     @auth
-                        <a href="{{ url('/profiles') }}">プロファイル</a>
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">ログアウト</a>
+                        <a href="{{ url('/profiles') }}">{{ __('matsune.profile') }}</a>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('matsune.logout') }}</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                         </form>
                     @else
-                        <a href="{{ route('login') }}">ログイン</a>
-                        <a href="{{ route('register') }}">会員登録</a>
+                        <a href="{{ route('login') }}">{{ __('matsune.login') }}</a>
+                        <a href="{{ route('register') }}">{{ __('matsune.member_register') }}</a>
                     @endauth
                 </div>
             @endif
             <footer>
-                &copy;<?= date('Y') ?>&nbsp;松根ファミリー
+                &copy;<?= date('Y') ?>&nbsp;{{ __('matsune.company_name') }}
             </footer>
         </div>
     </body>

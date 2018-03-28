@@ -1,27 +1,27 @@
 @extends('layouts.base')
 
-@section('title', 'Profile｜Matsune Family')
+@section('title', __('matsune.profile_title'))
 
 @section('content')
 <div class="profile_body">
     <table>
         <tbody>
             <tr>
-                <td>Sex:</td>
+                <td>{{ __('matsune.sex') }}:</td>
                 <td>Men</td>
             </tr>
             <tr>
-                <td>Blood Type:</td>
+                <td>{{ __('matsune.blood_type') }}:</td>
                 <td>{{ $blood_type }}</td>
             </tr>
             <tr>
-                <td>Birthday:</td>
+                <td>{{ __('matsune.birthday') }}:</td>
                 <td>{{ (new DateTime(auth()->user()->birthday))->format('Y/m/d') }}</td>
             </tr>
         </tbody>
     </table>
-    <input type="button" value="Cancel" class="footer_button" onclick="location.href='/';">
-    <input type="button" value="Donate" class="footer_button" onclick="location.href='/points';">
+    <input type="button" value="{{ __('matsune.back') }}" class="footer_button" onclick="location.href='/';">
+    <input type="button" value="{{ __('matsune.donate_point') }}" class="footer_button" onclick="location.href='/points/';">
 </div>
 @endsection
 

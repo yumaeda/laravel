@@ -25,7 +25,7 @@
             </header>
             @yield('content')
             <footer class="profile_footer">
-                <div class="copyright_pane">&copy;<?= date('Y') ?>&nbsp;Matsune Family Corporation</div>
+                <div class="copyright_pane">&copy;<?= date('Y') ?>&nbsp;{{ __('matsune.company_name') }}</div>
             </footer>
         </div>
     </body>

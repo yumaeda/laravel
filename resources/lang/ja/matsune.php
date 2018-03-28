@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'company_name' => '松根ファミリー',
+    'home_title' => 'ホーム｜松根ファミリー',
+    'profile_title' => 'プロファイル｜松根ファミリー',
+    'point_title' => 'ポイント｜松根ファミリー',
+    'admin_subtitle' => '山ちゃんと愉快な管理者達！！',
+    'home_subtitle' => '山ちゃんと愉快な仲間達！！',
+    'sex' => '性別',
+    'blood_type' => '血液型',
+    'birthday' => '誕生日',
+    'profile' => 'プロファイル',
+    'email' => 'Email',
+    'password' => 'パスワード',
+    'login' => 'ログイン',
+    'logout' => 'ログアウト',
+    'member_register' => '会員登録',
+    'back' => '戻る',
+    'donate_point' => 'ポイント譲渡',
+    'comment_placeholder' => 'チンコを挿れる前にコメントをお願いします。',
+    'point_donation_error' => 'ちんこがデカすぎでポイント譲渡でがきません。',
+    'remember_me' => 'チンコのサイズを体に覚えさせる',
+    'forgot_your_password' => 'しこり過ぎてパスワードを忘れましたか？',
+];
