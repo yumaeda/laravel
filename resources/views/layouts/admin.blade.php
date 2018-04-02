@@ -10,8 +10,11 @@
         document.createElement('footer');
 
         </script>
+        <link href="{{ asset('css/vendor/multi-select.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/common.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/admin.css') }}" rel="stylesheet" type="text/css">
+        <script src="{{ asset('js/vendor/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/vendor/jquery.multi-select.js') }}"></script>
         <script src="{{ asset('js/vendor/riot+compiler.min.js') }}"></script>
         <script src="{{ asset('riot/login.tag') }}" type="riot/tag"></script>
     </head>
@@ -38,4 +41,5 @@
 riot.mount('*');
 
 </script>
+@yield('bottom_script')
 

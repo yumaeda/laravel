@@ -48,3 +48,13 @@ footer {
 .transaction_summary td {
     padding: 10px;
 }
+
+.store_name_fld {
+    width: 300px;
+    padding: 10px;
+}
+
+.select_users_pane {
+    display: inline-block;
+    margin: 25px 0 25px 0;
+}

@@ -17,7 +17,8 @@
 @section('footer')
 @if (Route::has('login'))
     <div class="nav_link_pane">
-        <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">ログアウト</a>
+        <a href="{{ route('payment') }}">{{ __('matsune.pay') }}</a>
+        <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('matsune.logout') }}</a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}
         </form>

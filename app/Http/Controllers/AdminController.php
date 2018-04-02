@@ -31,6 +31,20 @@ class AdminController extends Controller
     }
 
     /*
+     * Return view for payment
+     *
+     * @access public
+     * @return void
+    */
+    public function payment()
+    {
+        $users = User::select('id', 'first_name', 'last_name')
+            ->get();
+
+        return view('admin.payment', [ 'users' => $users ]);
+    }
+
+    /*
      * Make a deposit for the specified user
      *
      * @access public
