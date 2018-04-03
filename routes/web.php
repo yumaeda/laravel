@@ -32,3 +32,7 @@ Route::post('/admin/deposit', 'AdminController@deposit')
     ->middleware('is_admin')
     ->name('deposit');
 
+Route::post('/admin/withdraw', 'AdminController@withdraw')
+    ->middleware('is_admin')
+    ->name('withdraw');
+

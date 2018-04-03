@@ -58,3 +58,8 @@ footer {
     display: inline-block;
     margin: 25px 0 25px 0;
 }
+
+.error_pane {
+    margin: 25px 0 25px 0;
+    color: red;
+}

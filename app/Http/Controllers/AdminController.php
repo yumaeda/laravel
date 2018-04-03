@@ -80,13 +80,65 @@ class AdminController extends Controller
     }
 
     /*
+     * Withdraw points from the specified users
+     *
+     * @access public
+     * @param Request $request
+     * @return void
+    */
+    public function withdraw(Request $request)
+    {
+        $this->validate($request, [
+            'store_name' => 'required|max:500',
+            'selected_users' => 'required',
+            'yen' => 'required|numeric|min:1000',
+        ]);
+
+        $store_name = $request->input('store_name');
+        $user_ids = $request->input('selected_users');
+        $total_point = $this->convertToPoint($request->input('yen'));
+        $point = ceil($total_point / count($user_ids));
+
+        $transactioins = [];
+        DB::beginTransaction();
+
+        try {
+            foreach ($user_ids as $user_id) {
+                $user = User::whereId($user_id)->first();
+                $user_name = ($user->first_name . ' ' . $user->last_name);
+
+                $transaction = new PointTransaction;
+                $transaction->donner_id    = $user_id;
+                $transaction->recipient_id = self::ADMIN_USER_ID;
+                $transaction->amount       = $point;
+                $transaction->completed    = 1;
+                $transaction->save();
+
+                $user->point = ($user->point - $point);
+                $user->save();
+
+                $transactions[] = [
+                    'point' => $point,
+                    'user_name' => $user_name,
+                ];
+            }
+
+            DB::commit();
+        } catch (Exception $ex) {
+            DB::rollBack();
+        }
+
+        return redirect()->back()->with('transactions', $transactions);
+    }
+
+    /*
      * Convert JPY to point
      *
-     * @access protected
+     * @access private
      * @param int $yen
      * @return int
     */
-    protected function convertToPoint(int $yen): int
+    private function convertToPoint(int $yen): int
     {
         return floor($yen / self::CONVERSION_RATE);
     }
