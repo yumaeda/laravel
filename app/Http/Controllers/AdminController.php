@@ -148,6 +148,6 @@ class AdminController extends Controller
     private function sendMail($user, int $point)
     {
         Mail::to($user->email)
-            ->send(new App\Mail\Payment($user, $point));
+            ->send(new \App\Mail\Payment($user, $point));
     }
 }
