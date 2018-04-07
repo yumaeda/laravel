@@ -6,6 +6,7 @@ use App\PointTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
@@ -141,5 +142,11 @@ class AdminController extends Controller
     private function convertToPoint(int $yen): int
     {
         return floor($yen / self::CONVERSION_RATE);
+    }
+
+    private function sendMail($user)
+    {
+        Mail::to($user->email)
+            ->send(new Payment($user));
     }
 }
