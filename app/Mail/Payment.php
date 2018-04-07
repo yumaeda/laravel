@@ -12,15 +12,17 @@ class Payment extends Mailable
     use Queueable, SerializesModels;
 
     public $donner;
+    public $point;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($donner)
+    public function __construct($donner, $point)
     {
         $this->donner = $donner;
+        $this->point = $point;
     }
 
     /**
@@ -30,7 +32,7 @@ class Payment extends Mailable
      */
     public function build()
     {
-        return $this->from('noreply@matsune-bank.com')
+        return $this->from('yumaeda@gmail.com')
             ->subject('Payment has been processed!')
             ->priority(1)
             ->view('emails.payment');

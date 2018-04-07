@@ -117,6 +117,7 @@ class AdminController extends Controller
 
                 $user->point = ($user->point - $point);
                 $user->save();
+                $this->sendMail($user, $point);
 
                 $transactions[] = [
                     'point' => $point,
@@ -144,9 +145,9 @@ class AdminController extends Controller
         return floor($yen / self::CONVERSION_RATE);
     }
 
-    private function sendMail($user)
+    private function sendMail($user, int $point)
     {
         Mail::to($user->email)
-            ->send(new Payment($user));
+            ->send(new Payment($user, $point));
     }
 }
