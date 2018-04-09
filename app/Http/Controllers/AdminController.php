@@ -80,6 +80,7 @@ class AdminController extends Controller
 
             $user->point = ($user->point + $point);
             $user->save();
+            $this->sendPaymentMail($user, $point);
 
             DB::commit();
         } catch (Exception $ex) {
@@ -126,7 +127,7 @@ class AdminController extends Controller
 
                 $user->point = ($user->point - $point);
                 $user->save();
-                $this->sendMail($user, $point);
+                $this->sendPaymentMail($user, $point);
 
                 $transactions[] = [
                     'point' => $point,
@@ -154,9 +155,31 @@ class AdminController extends Controller
         return floor($yen / self::CONVERSION_RATE);
     }
 
-    private function sendMail($user, int $point)
+    /*
+     * Send payment mail to the specified user
+     *
+     * @access private
+     * @param \App\User $user
+     * @param int $yen
+     * @return int
+    */
+    private function sendPaymentMail($user, int $point)
     {
         Mail::to($user->email)
             ->send(new \App\Mail\Payment($user, $point));
+    }
+
+    /*
+     * Send deposit mail to the specified user
+     *
+     * @access private
+     * @param \App\User $user
+     * @param int $yen
+     * @return int
+    */
+    private function sendDepositMail($user, int $point)
+    {
+        Mail::to($user->email)
+            ->send(new \App\Mail\Deposit($user, $point));
     }
 }

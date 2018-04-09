@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class Payment extends Mailable
+class Deposit extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -36,8 +36,8 @@ class Payment extends Mailable
     public function build()
     {
         return $this->from('yumaeda@gmail.com')
-            ->subject('Payment has been processed!')
+            ->subject('You\'ve Got Points')
             ->priority(1)
-            ->view('emails.payment');
+            ->view('emails.deposit');
     }
 }
