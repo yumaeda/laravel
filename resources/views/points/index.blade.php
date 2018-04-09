@@ -26,7 +26,7 @@
     <div class="point_donation_body">
         <span>To:&nbsp;</span>
         @include('inc.user_selector', [ 'users' => $users ])
-        <input type="number" value="0" class="point_fld" max="{{ auth()->user()->point }}" name="yen">&nbsp;pt
+        <input type="number" value="0" class="point_fld" max="{{ auth()->user()->point }}" name="point">&nbsp;pt
         <div class="comment_pane">
             <textarea class="comment_fld" rows="5" placeholder="{{ __('matsune.comment_placeholder') }}" name="comment"></textarea>
         </div>

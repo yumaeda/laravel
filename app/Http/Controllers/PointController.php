@@ -40,7 +40,7 @@ class PointController extends Controller
     public function donate(Request $request)
     {
         $donner = auth()->user();
-        $point = $request->input('yen');
+        $point = $request->input('point');
         $comment = $request->input('comment');
         $user_id = $request->input('user_id');
 
@@ -60,6 +60,9 @@ class PointController extends Controller
 
             $donner->point = ($donner->point - $point);
             $donner->save();
+
+            $user->point = ($user->point + $point);
+            $user->save();
 
             // TODO yumaeda: Send notification mail.
 
