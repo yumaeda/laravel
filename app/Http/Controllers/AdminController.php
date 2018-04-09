@@ -14,21 +14,33 @@ class AdminController extends Controller
     const CONVERSION_RATE = 1000;
 
     /*
+     * All users
+     *
+     * @var array
+    */
+    private $users = null;
+
+    /*
      * Constructor
      *
      */
     public function __construct()
     {
         $this->middleware('auth');
+
+        $this->users = User::select('id', 'first_name', 'last_name')
+            ->get();
     }
 
+    /*
+     * Return view for admin.index
+     *
+     * @access public
+     * @return void
+    */
     public function admin()
     {
-        $users = User::select('id', 'first_name', 'last_name')
-            ->where('id', '!=', Auth::id())
-            ->get();
-
-        return view('admin.index', [ 'users' => $users ]);
+        return view('admin.index', [ 'users' => $this->users ]);
     }
 
     /*
@@ -39,10 +51,7 @@ class AdminController extends Controller
     */
     public function payment()
     {
-        $users = User::select('id', 'first_name', 'last_name')
-            ->get();
-
-        return view('admin.payment', [ 'users' => $users ]);
+        return view('admin.payment', [ 'users' => $this->users ]);
     }
 
     /*
