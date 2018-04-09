@@ -10,7 +10,7 @@
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <div>
+        <div class="container">
             <header class="profile_header">
                 <div class="profile_image_pane">
                     <img src="{{ asset('images/profiles/' . auth()->user()->id . '.gif') }}" alt="Profile Image" class="profile_image">
@@ -23,7 +23,9 @@
                     </p>
                 </div>
             </header>
+            <div class="body_pane">
             @yield('content')
+            </div>
             <footer class="profile_footer">
                 <div class="copyright_pane">&copy;<?= date('Y') ?>&nbsp;{{ __('matsune.company_name') }}</div>
             </footer>

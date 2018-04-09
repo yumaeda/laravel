@@ -18,6 +18,7 @@ class CreatePointTransactionsTable extends Migration
             $table->integer('donner_id');
             $table->integer('recipient_id');
             $table->integer('amount');
+            $table->text('comment')->nullable();
             $table->boolean('completed');
             $table->timestamps();
         });

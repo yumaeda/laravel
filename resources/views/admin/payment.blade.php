@@ -19,8 +19,6 @@
         @endforeach
     </tbody>
 </table>
-
-
 @else
 <form action="{{ route('withdraw') }}" method="POST">
     @if ($errors->any())

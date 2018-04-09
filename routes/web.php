@@ -28,6 +28,9 @@ Route::get('/admin/payment', 'AdminController@payment')
     ->middleware('is_admin')
     ->name('payment');
 
+Route::post('/donate', 'PointController@donate')
+    ->name('donate');
+
 Route::post('/admin/deposit', 'AdminController@deposit')
     ->middleware('is_admin')
     ->name('deposit');
