@@ -80,7 +80,7 @@ class AdminController extends Controller
 
             $user->point = ($user->point + $point);
             $user->save();
-            $this->sendPaymentMail($user, $point);
+            $this->sendDepositMail($user, $point);
 
             DB::commit();
         } catch (Exception $ex) {
