@@ -19,6 +19,7 @@
         @endforeach
     </tbody>
 </table>
+<input type="button" value="{{ __('matsune.back') }}" class="footer_button" onclick="location.href='/profiles/';">
 @else
 <form action="{{ route('donate') }}" method="POST">
     {{ csrf_field() }}
