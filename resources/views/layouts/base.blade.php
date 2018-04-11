@@ -13,7 +13,7 @@
         <div class="container">
             <header class="profile_header">
                 <div class="profile_image_pane">
-                    <img src="{{ asset('images/profiles/' . auth()->user()->id . '.gif') }}" alt="Profile Image" class="profile_image">
+                    <img src="https://s3-ap-northeast-1.amazonaws.com/matsune-bank-s3/images/profiles/{{ auth()->user()->id }}.gif" alt="Profile Image" class="profile_image">
                 </div>
                 <div class="profile_name_pane">
                     <h2>{{ auth()->user()->first_name . '&nbsp;' . auth()->user()->last_name }}</h2>
