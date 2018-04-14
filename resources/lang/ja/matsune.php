@@ -8,6 +8,7 @@ return [
     'payment_title' => '支払い｜松根ファミリー',
     'admin_subtitle' => '山ちゃんと愉快な管理者達！！',
     'home_subtitle' => '山ちゃんと愉快な仲間達！！',
+    'edit_profile_image' => 'ハメ撮り画像を変更',
     'sex' => '性別',
     'blood_type' => '血液型',
     'birthday' => '誕生日',

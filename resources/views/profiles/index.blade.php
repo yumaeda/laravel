@@ -20,8 +20,9 @@
             </tr>
         </tbody>
     </table>
-    <input type="button" value="{{ __('matsune.back') }}" class="footer_button" onclick="location.href='/';">
     <input type="button" value="{{ __('matsune.donate_point') }}" class="footer_button" onclick="location.href='/points/';">
+    <input type="button" value="{{ __('matsune.edit_profile_image') }}" class="footer_button" onclick="location.href='/s3-image-upload/';">
+    <input type="button" value="{{ __('matsune.back') }}" class="footer_button" onclick="location.href='/';">
 </div>
 @endsection
 

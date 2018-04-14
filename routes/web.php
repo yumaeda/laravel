@@ -28,6 +28,9 @@ Route::get('/admin/payment', 'AdminController@payment')
     ->middleware('is_admin')
     ->name('payment');
 
+Route::get('s3-image-upload','S3ImageController@imageUpload');
+Route::post('s3-image-upload','S3ImageController@imageUploadPost');
+
 Route::post('/donate', 'PointController@donate')
     ->name('donate');
 
