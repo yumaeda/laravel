@@ -22,6 +22,7 @@ return [
     'member_register' => '会員登録',
     'back' => '戻る',
     'donate_point' => 'ポイント譲渡',
+    'image_upload_sucess' => 'ハメ撮り画像をネットに晒しました。',
     'comment_placeholder' => 'チンコを挿れる前にコメントをお願いします。',
     'store_name_placeholder' => 'お店の名前',
     'point_donation_error' => 'ちんこがデカすぎでポイント譲渡でがきません。',

@@ -44,7 +44,7 @@ class S3ImageController extends Controller
         $current_user->touch();
 
         return back()
-            ->with('success','Image Uploaded successfully.')
+            ->with('success', true)
             ->with('path', Storage::disk('s3')->url(UserService::IMG_DIR . $png_name));
     }
 }
