@@ -5,7 +5,7 @@
 @section('content')
 <div class="profile_body">
 @if (count($errors) > 0)
-    <strong>Whoops!</strong>&nbsp;There were some problems with your input.
+    {{ __('matsune.image_upload_error') }}
     <br><br>
     <ul>
     @foreach ($errors->all() as $error)
