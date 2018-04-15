@@ -11,15 +11,16 @@
     </head>
     <body>
         <div class="container">
+            @inject('user_svc', 'App\Services\UserService')
             <header class="profile_header">
                 <div class="profile_image_pane">
-                    <img src="{{ $cdn_host }}/images/profiles/{{ auth()->user()->id }}.gif" alt="Profile Image" class="profile_image">
+                    <img src="{{ $user_svc->getProfileImageUrl() }}" alt="Profile Image" class="profile_image">
                 </div>
                 <div class="profile_name_pane">
-                    <h2>{{ auth()->user()->first_name . '&nbsp;' . auth()->user()->last_name }}</h2>
+                    <h2>{{ $user_svc->getFullName() }}</h2>
                     <hr>
                     <p>
-                        <span class="point_text">{{ auth()->user()->point }}</span>&nbsp;pt&nbsp;
+                        <span class="point_text">{{ $user_svc->getPoint() }}</span>&nbsp;pt&nbsp;
                     </p>
                 </div>
             </header>

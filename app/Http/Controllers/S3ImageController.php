@@ -32,25 +32,18 @@ class S3ImageController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
+        $current_user = auth()->user();
+
         $image = $request->file('image');
-        $image_name = $this->getProfileImgName($request);
+        $image_name = $current_user->id . '.' . $request->image->getClientOriginalExtension();
         Storage::disk('s3')->put(self::PROFILE_IMG_DIR . $image_name, file_get_contents($image), 'public');
+
+        // Update update_at column of users table
+        $current_user->touch();
 
         return back()
             ->with('success','Image Uploaded successfully.')
             ->with('path', Storage::disk('s3')->url(self::PROFILE_IMG_DIR . $image_name));
-    }
-
-    /**
-    * Return profile image file name
-    *
-    * @access private
-    * @param Request $request
-    * @return string
-    */
-    private function getProfileImgName(Request $request): string
-    {
-        return auth()->user()->id . '.' . $request->image->getClientOriginalExtension();
     }
 }
 

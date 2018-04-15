@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        View::share('cdn_host', 'https://d19rwvl8cqmee6.cloudfront.net');
+        //View::share('cdn_host', 'https://d19rwvl8cqmee6.cloudfront.net');
     }
 
     /**
