@@ -4,6 +4,8 @@ namespace App\Services;
 class UserService
 {
     const CDN_HOST = 'https://d19rwvl8cqmee6.cloudfront.net';
+    const IMG_DIR = 'images/profiles/';
+    const IMG_FILE_EXTENSION = '.png';
 
     /*
      * @var App\User $user
@@ -50,9 +52,9 @@ class UserService
      */
     public function getProfileImageUrl(): string
     {
-        $filename = $this->user->id . '.gif' . '?' . $this->getUpdatedTimestamp(); 
+        $filename = $this->user->id . self::IMG_FILE_EXTENSION . '?' . $this->getUpdatedTimestamp(); 
 
-        return (self::CDN_HOST . '/images/profiles/' . $filename);
+        return (self::CDN_HOST . '/' . self::IMG_DIR . $filename);
     }
 
     /**

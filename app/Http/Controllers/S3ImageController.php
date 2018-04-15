@@ -1,13 +1,12 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Services\UserService;
 use Illuminate\Http\Request;
 use Storage;
 
 class S3ImageController extends Controller
 {
-    const PROFILE_IMG_DIR = 'images/profiles/';
-
     /**
     * Create view file
     *
@@ -33,17 +32,20 @@ class S3ImageController extends Controller
         ]);
 
         $current_user = auth()->user();
+        $png_name = $current_user->id . UserService::IMG_FILE_EXTENSION;
 
-        $image = $request->file('image');
-        $image_name = $current_user->id . '.' . $request->image->getClientOriginalExtension();
-        Storage::disk('s3')->put(self::PROFILE_IMG_DIR . $image_name, file_get_contents($image), 'public');
+        ob_start();
+        imagepng(imagecreatefromstring(file_get_contents($request->file('image'))));
+        $png_data = ob_get_clean();
+
+        Storage::disk('s3')->put(UserService::IMG_DIR . $png_name, $png_data, 'public');
 
         // Update update_at column of users table
         $current_user->touch();
 
         return back()
             ->with('success','Image Uploaded successfully.')
-            ->with('path', Storage::disk('s3')->url(self::PROFILE_IMG_DIR . $image_name));
+            ->with('path', Storage::disk('s3')->url(UserService::IMG_DIR . $png_name));
     }
 }
 
