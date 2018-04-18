@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -36,7 +37,7 @@ class Deposit extends Mailable
     public function build()
     {
         return $this->from('yumaeda@gmail.com')
-            ->subject('You\'ve Got Points')
+            ->subject(Lang::get('matsune.deposit_mail_title'))
             ->priority(1)
             ->view('emails.deposit');
     }

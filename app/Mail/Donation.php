@@ -1,31 +1,34 @@
 <?php
-
 namespace App\Mail;
 
+use App\User;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class Payment extends Mailable
+class Donation extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $donner;
+    public $recipient;
     public $point;
 
     /**
      * Create a new message instance.
      *
      * @access public
-     * @param \App\User $donner
+     * @param User $donner
+     * @param User $recipient
      * @param int $point
      * @return void
      */
-    public function __construct($donner, $point)
+    public function __construct(User $donner, User $recipient, int $point)
     {
         $this->donner = $donner;
+        $this->recipient= $recipient;
         $this->point = $point;
     }
 
@@ -37,8 +40,8 @@ class Payment extends Mailable
     public function build()
     {
         return $this->from('yumaeda@gmail.com')
-            ->subject(Lang::get('matsune.payment_mail_title'))
+            ->subject(Lang::get('matsune.donation_mail_title'))
             ->priority(1)
-            ->view('emails.payment');
+            ->view('emails.donation');
     }
 }

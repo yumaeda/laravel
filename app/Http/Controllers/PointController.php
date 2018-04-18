@@ -6,6 +6,7 @@ use App\PointTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 /*
  * Controller for point management
@@ -45,8 +46,8 @@ class PointController extends Controller
         $user_id = $request->input('user_id');
 
         DB::beginTransaction();
-        $user = User::whereId($user_id)->first();
-        $user_name = ($user->first_name . ' ' . $user->last_name);
+        $recipient = User::whereId($user_id)->first();
+        $recipient_name = ($recipient->first_name . ' ' . $recipient->last_name);
         $transactioins = [];
 
         try {
@@ -61,14 +62,14 @@ class PointController extends Controller
             $donner->point = ($donner->point - $point);
             $donner->save();
 
-            $user->point = ($user->point + $point);
-            $user->save();
+            $recipient->point = ($recipient->point + $point);
+            $recipient->save();
 
-            // TODO yumaeda: Send notification mail.
+            $this->sendDonationMail($donner, $recipient, $point);
 
             $transactions[] = [
                 'point' => $point,
-                'user_name' => $user_name,
+                'user_name' => $recipient_name,
             ];
 
             DB::commit();
@@ -77,6 +78,24 @@ class PointController extends Controller
         }
 
         return redirect()->back()->with('transactions', $transactions);
+    }
+
+    /*
+     * Send payment mail to the specified user
+     *
+     * @access private
+     * @param \App\User $donner
+     * @param \App\User $recipient
+     * @param int $point
+     * @return int
+    */
+    private function sendDonationMail(User $donner, User $recipient, int $point)
+    {
+        Mail::to($recipient->email)
+            ->send(new \App\Mail\Donation($donner, $recipient, $point));
+
+        Mail::to($donner->email)
+            ->send(new \App\Mail\Donation($donner, $point));
     }
 }
 
