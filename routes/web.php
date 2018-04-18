@@ -17,28 +17,29 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/profiles', 'ProfileController@index');
-Route::get('/points', 'PointController@index');
+// Routes accessible to login users
+Route::middleware([ 'auth' ])->group(function() {
+    Route::get('/profiles', 'ProfileController@index');
+    Route::get('/points', 'PointController@index');
+    Route::get('s3-image-upload','S3ImageController@imageUpload');
+    Route::post('s3-image-upload','S3ImageController@imageUploadPost');
 
-Route::get('/admin', 'AdminController@admin')
-    ->middleware('is_admin')
-    ->name('admin');
+    Route::post('/donate', 'PointController@donate')
+        ->name('donate');
+});
 
-Route::get('/admin/payment', 'AdminController@payment')
-    ->middleware('is_admin')
-    ->name('payment');
+// Routes accessible to administrator
+Route::middleware([ 'is_admin' ])->group(function() {
+    Route::get('/admin', 'AdminController@admin')
+        ->name('admin');
 
-Route::get('s3-image-upload','S3ImageController@imageUpload');
-Route::post('s3-image-upload','S3ImageController@imageUploadPost');
+    Route::get('/admin/payment', 'AdminController@payment')
+        ->name('payment');
 
-Route::post('/donate', 'PointController@donate')
-    ->name('donate');
+    Route::post('/admin/deposit', 'AdminController@deposit')
+        ->name('deposit');
 
-Route::post('/admin/deposit', 'AdminController@deposit')
-    ->middleware('is_admin')
-    ->name('deposit');
-
-Route::post('/admin/withdraw', 'AdminController@withdraw')
-    ->middleware('is_admin')
-    ->name('withdraw');
+    Route::post('/admin/withdraw', 'AdminController@withdraw')
+        ->name('withdraw');
+});
 
