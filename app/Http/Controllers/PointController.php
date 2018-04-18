@@ -95,7 +95,7 @@ class PointController extends Controller
             ->send(new \App\Mail\Donation($donner, $recipient, $point));
 
         Mail::to($donner->email)
-            ->send(new \App\Mail\Donation($donner, $point));
+            ->send(new \App\Mail\Donation($donner, $recipient, $point));
     }
 }
 
