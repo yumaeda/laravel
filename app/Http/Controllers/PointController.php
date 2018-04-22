@@ -65,7 +65,7 @@ class PointController extends Controller
             $recipient->point = ($recipient->point + $point);
             $recipient->save();
 
-            $this->sendDonationMail($donner, $recipient, $point);
+            $this->sendDonationMail($donner, $recipient, $point, $comment);
 
             $transactions[] = [
                 'point' => $point,
@@ -87,15 +87,16 @@ class PointController extends Controller
      * @param \App\User $donner
      * @param \App\User $recipient
      * @param int $point
+     * @param string $comment
      * @return int
     */
-    private function sendDonationMail(User $donner, User $recipient, int $point)
+    private function sendDonationMail(User $donner, User $recipient, int $point, string $comment)
     {
         Mail::to($recipient->email)
-            ->send(new \App\Mail\Donation($donner, $recipient, $point));
+            ->send(new \App\Mail\Donation($donner, $recipient, $point, $comment));
 
         Mail::to($donner->email)
-            ->send(new \App\Mail\Donation($donner, $recipient, $point));
+            ->send(new \App\Mail\Donation($donner, $recipient, $point, $comment));
     }
 }
 
