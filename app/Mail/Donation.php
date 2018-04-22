@@ -15,6 +15,7 @@ class Donation extends Mailable
     public $donner;
     public $recipient;
     public $point;
+    public $comment;
 
     /**
      * Create a new message instance.
@@ -23,13 +24,15 @@ class Donation extends Mailable
      * @param User $donner
      * @param User $recipient
      * @param int $point
+     * @param string $comment
      * @return void
      */
-    public function __construct(User $donner, User $recipient, int $point)
+    public function __construct(User $donner, User $recipient, int $point, string $comment)
     {
         $this->donner = $donner;
         $this->recipient= $recipient;
         $this->point = $point;
+        $this->comment = $comment;
     }
 
     /**
