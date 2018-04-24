@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\PointTransaction;
+use App\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -107,18 +108,25 @@ class AdminController extends Controller
 
         $store_name = $request->input('store_name');
         $user_ids = $request->input('selected_users');
-        $total_point = $this->convertToPoint($request->input('yen'));
+        $total_yen = $request->input('yen');
+        $total_point = $this->convertToPoint($total_yen);
         $point = ceil($total_point / count($user_ids));
 
         $transactioins = [];
         DB::beginTransaction();
 
         try {
+            $payment = new Payment;
+            $payment->store_id = 1;
+            $payment->amount = $total_yen;
+            $payment->save();
+
             foreach ($user_ids as $user_id) {
                 $user = User::whereId($user_id)->first();
                 $user_name = ($user->first_name . ' ' . $user->last_name);
 
                 $transaction = new PointTransaction;
+                $transaction->payment_id   = $payment->id;
                 $transaction->donner_id    = $user_id;
                 $transaction->recipient_id = self::ADMIN_USER_ID;
                 $transaction->amount       = $point;
