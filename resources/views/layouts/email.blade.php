@@ -7,7 +7,7 @@
 </div>
 <div style="margin-top: 20px;">
     <div>
-        Please refer to the <a href="http://{{ $_SERVER['HOST_NAME'] }}/profiles/">{{__('matsune.profile') }}</a> for checking your points.
+        Please refer to the <a href="http://{{ request()->getHttpHost() }}/profiles/">{{__('matsune.profile') }}</a> for checking your points.
     </div>
     <div style="margin-top: 20px;">
         Thank you for supporting Matsune Bank.<br>
