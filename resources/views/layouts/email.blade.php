@@ -6,7 +6,12 @@
     @yield('content')
 </div>
 <div style="margin-top: 20px;">
-    Thank you for supporting Matsune Bank.<br>
-    We are always there for you :)
+    <div>
+        Please refer to the <a href="http://{{ $_SERVER['HOST_NAME'] }}/profiles/">{{__('matsune.profile') }}</a> for checking your points.
+    </div>
+    <div style="margin-top: 20px;">
+        Thank you for supporting Matsune Bank.<br>
+        We are always there for you :)
+    </div>
 </div>
 
