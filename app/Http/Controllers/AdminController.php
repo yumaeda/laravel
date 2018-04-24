@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
+    const DEPOSIT_ID = 0;
     const ADMIN_USER_ID = 0;
     const CONVERSION_RATE = 1000;
 
@@ -73,6 +74,7 @@ class AdminController extends Controller
 
         try {
             $transaction = new PointTransaction;
+            $transaction->payment_id   = self::DEPOSIT_ID;
             $transaction->donner_id    = self::ADMIN_USER_ID;
             $transaction->recipient_id = $user_id;
             $transaction->amount       = $point;
