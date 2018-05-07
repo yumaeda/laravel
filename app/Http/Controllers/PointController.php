@@ -93,10 +93,10 @@ class PointController extends Controller
     private function sendDonationMail(User $donner, User $recipient, int $point, string $comment)
     {
         Mail::to($recipient->email)
-            ->send(new \App\Mail\Donation($donner, $recipient, $point, $comment));
+            ->queue(new \App\Mail\Donation($donner, $recipient, $point, $comment));
 
         Mail::to($donner->email)
-            ->send(new \App\Mail\Donation($donner, $recipient, $point, $comment));
+            ->queue(new \App\Mail\Donation($donner, $recipient, $point, $comment));
     }
 }
 

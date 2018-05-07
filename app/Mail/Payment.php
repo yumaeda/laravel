@@ -12,6 +12,7 @@ class Payment extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $store_name;
     public $donner;
     public $point;
 
@@ -19,12 +20,14 @@ class Payment extends Mailable
      * Create a new message instance.
      *
      * @access public
+     * @param string $store_name
      * @param \App\User $donner
      * @param int $point
      * @return void
      */
-    public function __construct($donner, $point)
+    public function __construct($store_name, $donner, $point)
     {
+        $this->store_name = $store_name;
         $this->donner = $donner;
         $this->point = $point;
     }

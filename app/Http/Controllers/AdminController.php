@@ -137,7 +137,7 @@ class AdminController extends Controller
 
                 $user->point = ($user->point - $point);
                 $user->save();
-                $this->sendPaymentMail($user, $point);
+                $this->sendPaymentMail($store_name, $user, $point);
 
                 $transactions[] = [
                     'point' => $point,
@@ -169,14 +169,15 @@ class AdminController extends Controller
      * Send payment mail to the specified user
      *
      * @access private
+     * @param string $store_name
      * @param \App\User $user
      * @param int $yen
      * @return int
     */
-    private function sendPaymentMail($user, int $point)
+    private function sendPaymentMail(string $store_name, User $user, int $point)
     {
         Mail::to($user->email)
-            ->send(new \App\Mail\Payment($user, $point));
+            ->queue(new \App\Mail\Payment($store_name, $user, $point));
     }
 
     /*
@@ -190,6 +191,6 @@ class AdminController extends Controller
     private function sendDepositMail($user, int $point)
     {
         Mail::to($user->email)
-            ->send(new \App\Mail\Deposit($user, $point));
+            ->queue(new \App\Mail\Deposit($user, $point));
     }
 }
