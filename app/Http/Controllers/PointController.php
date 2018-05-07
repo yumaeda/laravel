@@ -45,6 +45,11 @@ class PointController extends Controller
         $comment = $request->input('comment');
         $user_id = $request->input('user_id');
 
+        // TODO yumaeda: Implement validator.
+        if ($point <= 0) {
+            return redirect()->back();
+        }
+
         DB::beginTransaction();
         $recipient = User::whereId($user_id)->first();
         $recipient_name = ($recipient->first_name . ' ' . $recipient->last_name);
