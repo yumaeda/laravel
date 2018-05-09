@@ -57,6 +57,7 @@ class PointController extends Controller
 
         try {
             $transaction = new PointTransaction;
+            $transaction->payment_id   = self::DEPOSIT_ID;
             $transaction->donner_id    = $donner->id;
             $transaction->recipient_id = $user_id;
             $transaction->amount       = $point;
