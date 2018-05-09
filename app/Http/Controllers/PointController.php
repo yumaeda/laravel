@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Mail;
  */
 class PointController extends Controller
 {
+    const DONATION_ID = 0;
+
     /*
      * Show point index page
      *
@@ -57,7 +59,7 @@ class PointController extends Controller
 
         try {
             $transaction = new PointTransaction;
-            $transaction->payment_id   = self::DEPOSIT_ID;
+            $transaction->payment_id   = self::DONATION_ID;
             $transaction->donner_id    = $donner->id;
             $transaction->recipient_id = $user_id;
             $transaction->amount       = $point;
