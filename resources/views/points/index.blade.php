@@ -4,16 +4,16 @@
 
 @section('content')
 @if (session('transactions'))
-<h3>レイプの詳細</h3>
+<h3>{{ __('matsune.donate_point') }}</h3>
 <table class="transaction_summary">
     <tbody>
         @foreach (session('transactions') as $transaction)
         <tr>
-            <td>掘られた人:</td>
+            <td>{{ __('matsune.recipient') }}:</td>
             <td>{{ $transaction['user_name'] }}</td>
         </tr>
         <tr>
-            <td>痔の治療費:</td>
+            <td>{{ __('matsune.donated_point') }}:</td>
             <td>{{ $transaction['point'] }}&nbsp;pt</td>
         </tr>
         @endforeach
@@ -30,8 +30,8 @@
         <div class="comment_pane">
             <textarea class="comment_fld" rows="5" placeholder="{{ __('matsune.comment_placeholder') }}" name="comment"></textarea>
         </div>
-        <input type="button" value="{{ __('matsune.back') }}" class="footer_button" onclick="location.href='/profiles/';">
         <input type="submit" value="{{ __('matsune.donate_point') }}" class="footer_button">
+        <input type="button" value="{{ __('matsune.back') }}" class="footer_button" onclick="location.href='/profiles/';">
     </div>
 </form>
 @endif
