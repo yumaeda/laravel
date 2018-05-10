@@ -8,6 +8,7 @@
         <title>@yield('title')</title>
         <link href="{{ asset('css/common.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('css/user-selector.css') }}" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div class="container">
@@ -35,3 +36,6 @@
 </html>
 
 <script type="text/javascript" src="{{ asset('js/vendor/sweetalert2.all.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/vendor/jquery.min.js') }}"></script>
+@yield('bottom-script')
+

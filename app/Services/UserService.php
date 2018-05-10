@@ -48,11 +48,16 @@ class UserService
      * Get last modified timestamp of the user profile
      *
      * @access public
+     * @param string $user_id
      * @return string
      */
-    public function getProfileImageUrl(): string
+    public function getProfileImageUrl(int $user_id = -1): string
     {
-        $filename = $this->user->id . self::IMG_FILE_EXTENSION . '?' . $this->getUpdatedTimestamp(); 
+        if ($user_id === -1) {
+            $user_id = $this->user->id;
+        }
+
+        $filename = $user_id . self::IMG_FILE_EXTENSION . '?' . $this->getUpdatedTimestamp(); 
 
         return (self::CDN_HOST . '/' . self::IMG_DIR . $filename);
     }
