@@ -31,6 +31,15 @@
         <div class="comment_pane">
             <textarea class="comment_fld" rows="5" placeholder="{{ __('matsune.comment_placeholder') }}" name="comment"></textarea>
         </div>
+        <div class="error_pane">
+        @if ($errors->any())
+            <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+            </ul>
+        @endif
+        </div>
         <input type="submit" value="{{ __('matsune.donate_point') }}" class="footer_button">
         <input type="button" value="{{ __('matsune.back') }}" class="footer_button" onclick="location.href='/profiles/';">
     </div>

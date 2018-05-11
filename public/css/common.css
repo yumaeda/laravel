@@ -11,6 +11,11 @@
     margin-top: 20px;
 }
 
+.error_pane {
+    color: red;
+    padding: 10px;
+}
+
 .user_selector {
     padding: 10px;
 }

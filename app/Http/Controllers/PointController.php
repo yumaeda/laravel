@@ -42,15 +42,15 @@ class PointController extends Controller
      */
     public function donate(Request $request)
     {
+        $this->validate($request, [
+            'point' => 'required|numeric|min:1',
+            'comment' => 'required'
+        ]);
+
         $donner = auth()->user();
         $point = $request->input('point');
         $comment = $request->input('comment');
         $user_id = $request->input('user_id');
-
-        // TODO yumaeda: Implement validator.
-        if ($point <= 0) {
-            return redirect()->back();
-        }
 
         DB::beginTransaction();
         $recipient = User::whereId($user_id)->first();
