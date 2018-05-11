@@ -42,12 +42,13 @@ class PointController extends Controller
      */
     public function donate(Request $request)
     {
+        $donner = auth()->user();
+
         $this->validate($request, [
-            'point' => 'required|numeric|min:1',
+            'point' => 'required|numeric|between:1,' . $donner->point,
             'comment' => 'required'
         ]);
 
-        $donner = auth()->user();
         $point = $request->input('point');
         $comment = $request->input('comment');
         $user_id = $request->input('user_id');
